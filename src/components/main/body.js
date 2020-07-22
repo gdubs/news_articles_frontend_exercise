@@ -10,7 +10,7 @@ class Body extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getArticles();
+    this.props.getArticles(10, 1);
   }
   render() {
     return <div>body</div>;
@@ -25,7 +25,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getArticles: () => dispatch(getArticles()),
+    getArticles: (page_size, page_number) =>
+      dispatch(getArticles(page_size, page_number)),
   };
 }
 
