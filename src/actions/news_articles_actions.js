@@ -7,7 +7,12 @@ export function getArticles(page_size, page_number) {
     return apiService
       .getNextNewsArticlesBy(page_size, page_number)
       .then((d) => {
-        console.log(d);
+        console.log("yo before dispatch");
+        console.log(d.data.articles);
+        dispatch({
+          type: constants.NEWS_GET_NEXT,
+          payload: d.data.articles,
+        });
       });
   };
 }

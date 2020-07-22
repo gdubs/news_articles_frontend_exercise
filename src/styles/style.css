@@ -36,4 +36,8 @@ header .custom {
 header .custom nav .navbar a .navbar-brand {
   color: #ffffff;
 }
+
+a {
+  text-decoration: none;
+}
 /*# sourceMappingURL=style.css.map */

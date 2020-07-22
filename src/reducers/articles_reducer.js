@@ -16,9 +16,11 @@ function reducer(
     }
     case constants.NEWS_GET_NEXT: {
       const next_articles = action.payload;
+      console.log("payload");
+      console.log(next_articles);
       return {
         ...state,
-        articles: [...state.articles, next_articles],
+        articles: [...next_articles],
       };
     }
     default:

@@ -7,7 +7,7 @@ class apiService {
       "https://newsapi.org/v2/everything?domains=washingtonpost.com,nytimes.com?" +
       `&pageSize=${page_size}` +
       `&page=${page_number}` +
-      "&apiKey=31c73574cabe400eb6df638c9abd006b";
+      `&apiKey=${process.env.NEWS_API_KEY}`;
 
     console.log("url " + url);
     return axios({

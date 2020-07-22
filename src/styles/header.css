@@ -1,0 +1,11 @@
+header .custom {
+  background: #3c3b63;
+  color: #ffffff;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.2);
+}
+
+header .custom nav .navbar a .navbar-brand {
+  color: #ffffff;
+}
+/*# sourceMappingURL=header.css.map */
