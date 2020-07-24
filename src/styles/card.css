@@ -7,15 +7,21 @@
 }
 
 .my-card {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 calc(25% - 1em);
-          flex: 0 1 calc(25% - 1em);
-  margin: 0 0.5rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 30%;
+          flex: 1 0 30%;
+  margin: 1%;
 }
 
 .my-card:hover {
   -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.my-card:last-of-type {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
 }
 
 .my-card-header {

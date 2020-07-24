@@ -8,11 +8,17 @@ $card_details_font_color: rgba(0, 0, 0, 0.54);
   display: flex;
   flex-wrap: wrap;
 }
+
+// flex: 0 1 calc(30% - 1em);
+// margin: 0 0.5rem;
 .my-card {
-  flex: 0 1 calc(25% - 1em);
-  margin: 0 0.5rem;
+  flex: 1 0 30%;
+  margin: 1%;
   &:hover {
     box-shadow: 0 8px 16px 0 $card_shadow;
+  }
+  &:last-of-type {
+    flex-grow: 0;
   }
 }
 

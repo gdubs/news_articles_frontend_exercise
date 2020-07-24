@@ -1,60 +1,83 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { getArticles } from "../../actions/news_articles_actions";
 import { connect } from "react-redux";
+import Article from "../articles/article";
 require("../../styles/card.scss");
 
-const Body = ({ is_loading_next, news_articles, getArticles }) => {
+const Body = ({
+  has_more,
+  current_page_articles,
+  is_loading_next,
+  getArticles,
+  scrollable,
+}) => {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(is_loading_next);
-  }, [is_loading_next]);
-
-  useEffect(() => {
-    getArticles(10, currentPage);
+    if (currentPage === 1 && !isLoading) getArticles(100, currentPage);
   }, []);
 
   useEffect(() => {
-    console.log("props updated");
-    setArticles(news_articles);
-    setCurrentPage(currentPage + 1);
-  }, [news_articles]);
+    if (currentPage !== 1 && !isLoading) getArticles(10, currentPage);
+  }, [currentPage]);
+
+  useEffect(() => {
+    setArticles([...articles, ...current_page_articles]);
+  }, [current_page_articles]);
+
+  useEffect(() => {
+    setIsLoading(is_loading_next);
+  }, [is_loading_next]);
+
+  // scrolling trigger
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  function handleScroll() {
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+      document.documentElement.offsetHeight
+    )
+      return;
+    setCurrentPage((pv) => pv + 1);
+  }
+
+  const getuid = () => {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (
+      c
+    ) {
+      var r = (Math.random() * 16) | 0,
+        v = c == "x" ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  };
 
   const renderArticles = () => {
-    return articles.map((a, i) => {
-      return (
-        <div key={`article-${a.publishedAt}`} className="my-card">
-          <div>
-            <img src={a.urlToImage} alt={a.title} />
-          </div>
-          <div className="my-card-title">
-            <a href={a.url}>{a.title}</a>
-          </div>
-          <div className="my-card-body">{a.description}</div>
-        </div>
-      );
-    });
+    if (articles && articles.length > 0)
+      return articles.map((a, i) => {
+        return <Article key={`article-${getuid()}`} article={a} />;
+      });
   };
 
   return (
     <div>
       <h2>Articles</h2>
-      {isLoading ? (
-        "Loading..."
-      ) : (
-        <div className="my-cards">{renderArticles()}</div>
-      )}
+      <div className="my-cards" id="articles">
+        {renderArticles()}
+        {isLoading ? "Loading new articles..." : null}
+      </div>
     </div>
   );
 };
 
 function mapStateToProps(state) {
-  console.log("state to props");
-  console.log(state);
   return {
-    news_articles: state.articles.articles,
+    current_page_articles: state.articles.current_page_articles,
+    has_more: state.articles.has_more,
     is_loading_next: state.uiactivity.is_loading_next,
   };
 }

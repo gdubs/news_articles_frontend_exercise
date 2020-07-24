@@ -11,11 +11,21 @@ export function getArticles(page_size, page_number) {
     return apiService
       .getNextNewsArticlesBy(page_size, page_number)
       .then((d) => {
-        console.log("yo before dispatch");
-        console.log(d.data.articles);
+        // console.log("yo before dispatch");
+        // console.log(d);
+
+        // mock
+        // gor uncomment const payload = d.data;
+        const payload = {
+          articles: [...d.data],
+          totalResults: 4000,
+          page_number,
+          page_size,
+        };
+
         dispatch({
           type: constants.NEWS_GET_NEXT,
-          payload: d.data.articles,
+          payload,
         });
         dispatch(isLoading(false));
       });

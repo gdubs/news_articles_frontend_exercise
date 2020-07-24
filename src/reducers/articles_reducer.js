@@ -2,25 +2,25 @@ import * as constants from "../common/constants";
 
 function reducer(
   state = {
-    articles: [],
+    current_page_articles: [],
+    has_more: false,
   },
   action
 ) {
   switch (action.type) {
-    case constants.NEWS_GET_ALL: {
-      const articles = action.payload;
-      return {
-        ...state,
-        articles: articles,
-      };
-    }
     case constants.NEWS_GET_NEXT: {
-      const next_articles = action.payload;
+      const next_articles = action.payload.articles;
+      const has_more =
+        action.payload.page_number * action.payload.page_size <
+        action.payload.totalResults;
+
       console.log("payload");
-      console.log(next_articles);
+      console.log(action.payload);
+
       return {
         ...state,
-        articles: [...next_articles],
+        current_page_articles: [...next_articles],
+        has_more: has_more,
       };
     }
     default:
