@@ -1,11 +1,31 @@
-header .custom {
+header {
   background: #3c3b63;
   color: #ffffff;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2);
   box-shadow: rgba(0, 0, 0, 0.2);
+  vertical-align: middle;
 }
 
-header .custom nav .navbar a .navbar-brand {
+ul.my-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+ul.my-nav li {
+  float: left;
+}
+
+ul.my-nav li a {
   color: #ffffff;
+  display: inline-block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.my-nav li a:hover {
+  color: #b4b2ec;
 }
 /*# sourceMappingURL=header.css.map */

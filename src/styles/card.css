@@ -1,0 +1,61 @@
+.my-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.my-card {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 calc(25% - 1em);
+          flex: 0 1 calc(25% - 1em);
+  margin: 0 0.5rem;
+}
+
+.my-card:hover {
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.my-card-header {
+  color: rgba(0, 0, 0, 0.87);
+  padding: 5px;
+}
+
+.my-card-title {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.my-card-title a {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.my-card-description {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.my-card-body {
+  padding: 2px 16px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.my-card-avatar {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.my-card-avatar-label {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+/* .my-card 
+  box-shadow: 0 4px 8px 0 $card_shadow;
+  transition: 0.3s;
+  border-radius: 5px;
+  width: 360px;
+  padding: 10px;
+  float: left;
+  margin: 0px 5px;*/
+/*# sourceMappingURL=card.css.map */

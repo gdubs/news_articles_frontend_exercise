@@ -26,18 +26,79 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-header .custom {
-  background: #3c3b63;
-  color: #ffffff;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.2);
-          box-shadow: rgba(0, 0, 0, 0.2);
-}
-
-header .custom nav .navbar a .navbar-brand {
-  color: #ffffff;
+.float-right {
+  float: right !important;
 }
 
 a {
   text-decoration: none;
+}
+
+.my-btn {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.my-btn:hover {
+  background-color: rgba(61, 23, 23, 0.15);
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.my-search::-webkit-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(126, 1, 1, 0.205);
+  opacity: 1;
+  /* Firefox */
+}
+
+.my-search:-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(126, 1, 1, 0.205);
+  opacity: 1;
+  /* Firefox */
+}
+
+.my-search::-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(126, 1, 1, 0.205);
+  opacity: 1;
+  /* Firefox */
+}
+
+.my-search::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(126, 1, 1, 0.205);
+  opacity: 1;
+  /* Firefox */
+}
+
+.my-search:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgba(126, 1, 1, 0.205);
+}
+
+.my-search::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgba(126, 1, 1, 0.205);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 /*# sourceMappingURL=style.css.map */
