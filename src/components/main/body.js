@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { getArticles } from "../../actions/news_articles_actions";
 import { connect } from "react-redux";
-import Article from "../articles/article";
+import Articles from "../articles/articles";
+import Header from "./header";
 require("../../styles/card.scss");
 
 const Body = ({
@@ -9,18 +10,32 @@ const Body = ({
   current_page_articles,
   is_loading_next,
   getArticles,
-  scrollable,
 }) => {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchBy, setSearchBy] = useState("");
 
   useEffect(() => {
-    if (currentPage === 1 && !isLoading) getArticles(100, currentPage);
-  }, []);
+    if (
+      searchBy !== "" &&
+      typeof searchBy !== "undefined" &&
+      searchBy !== null
+    ) {
+      setArticles([]);
+      getArticles(100, 1, searchBy);
+    } else {
+      // initial load or search was reset
+      setArticles([]);
+      getArticles(100, 1, searchBy);
+      setCurrentPage(5);
+    }
+  }, [searchBy]);
 
   useEffect(() => {
-    if (currentPage !== 1 && !isLoading) getArticles(10, currentPage);
+    if ((currentPage !== 1 || currentPage !== 5) && !isLoading && has_more) {
+      getArticles(10, currentPage, searchBy);
+    }
   }, [currentPage]);
 
   useEffect(() => {
@@ -31,46 +46,48 @@ const Body = ({
     setIsLoading(is_loading_next);
   }, [is_loading_next]);
 
-  // scrolling trigger
+  // scrolling trigger -- infinite
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  function handleScroll() {
+  const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop !==
       document.documentElement.offsetHeight
     )
       return;
     setCurrentPage((pv) => pv + 1);
-  }
-
-  const getuid = () => {
-    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (
-      c
-    ) {
-      var r = (Math.random() * 16) | 0,
-        v = c == "x" ? r : (r & 0x3) | 0x8;
-      return v.toString(16);
-    });
   };
 
   const renderArticles = () => {
     if (articles && articles.length > 0)
       return articles.map((a, i) => {
-        return <Article key={`article-${getuid()}`} article={a} />;
+        return <Article key={a.guid} article={a} />;
       });
   };
 
+  const onSearch = (e) => {
+    setSearchBy(e.target.value);
+  };
+
   return (
-    <div>
-      <h2>Articles</h2>
-      <div className="my-cards" id="articles">
-        {renderArticles()}
-        {isLoading ? "Loading new articles..." : null}
+    <>
+      <Header searchHandler={onSearch} is_loading={isLoading}></Header>
+      <div className="main">
+        <h2>Articles</h2>
+        <div className="my-cards" id="articles">
+          {articles.length > 0 ? (
+            <Articles articles={articles} />
+          ) : !isLoading ? (
+            <div className="my-card">
+              <div className="my-card-body">No articles found</div>
+            </div>
+          ) : null}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -84,8 +101,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getArticles: (page_size, page_number) =>
-      dispatch(getArticles(page_size, page_number)),
+    getArticles: (page_size, page_number, search_by) =>
+      dispatch(getArticles(page_size, page_number, search_by)),
   };
 }
 

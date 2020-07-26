@@ -2,7 +2,6 @@ import React from "react";
 
 const Article = ({ article }) => {
   const { title, url, description, urlToImage } = article;
-  console.log("articleeeee");
   return (
     <div className="my-card">
       <div>

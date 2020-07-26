@@ -9,7 +9,12 @@ function reducer(
 ) {
   switch (action.type) {
     case constants.NEWS_GET_NEXT: {
-      const next_articles = action.payload.articles;
+      const next_articles = action.payload.articles.map((a) => {
+        return {
+          ...a,
+          guid: hashString(`${a.title}-${a.source.name}-${a.publishedAt}`),
+        };
+      });
       const has_more =
         action.payload.page_number * action.payload.page_size <
         action.payload.totalResults;
@@ -28,4 +33,10 @@ function reducer(
   }
 }
 
+function hashString(s) {
+  return s.split("").reduce(function (a, b) {
+    a = (a << 5) - a + b.charCodeAt(0);
+    return a & a;
+  }, 0);
+}
 export default reducer;

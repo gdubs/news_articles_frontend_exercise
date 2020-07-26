@@ -1,3 +1,16 @@
+/*
+
+
+Card
+  Avatar backgrounnd: #bdbdbd
+  Avatar text: #fafafa
+  Avatar text: rgba(0, 0, 0, 0.87)
+  Avatar date: rgba(0, 0, 0, 0.54)
+  Catd title: rgba(0, 0, 0, 0.87)
+  Card description: rgba(0, 0, 0, 0.54)
+  Card shadow: rgba(0,0,0,0.2)
+
+  */
 .my-cards {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -33,6 +46,7 @@
   color: rgba(0, 0, 0, 0.87);
   font-size: 1.5em;
   font-weight: 700;
+  padding: 5px;
 }
 
 .my-card-title a {
@@ -41,6 +55,7 @@
 
 .my-card-description {
   color: rgba(0, 0, 0, 0.54);
+  padding: 5px 10px;
 }
 
 .my-card-body {

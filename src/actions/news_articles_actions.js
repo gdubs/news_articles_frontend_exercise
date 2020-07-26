@@ -1,24 +1,30 @@
 import { isLoading } from "./uiactivity_actions";
-import apiService from "../services/apiService";
+import ApiService from "../services/apiService";
 import * as constants from "../common/constants";
 
-export function getArticles(page_size, page_number) {
+const apiService = new ApiService("http://localhost:3000");
+
+export function getArticles(page_size, page_number, search_by = "") {
   return function (dispatch) {
-    console.log("yo get articles");
-
     dispatch(isLoading(true));
-
     return apiService
-      .getNextNewsArticlesBy(page_size, page_number)
+      .getNextNewsArticlesBy(page_size, page_number, search_by)
       .then((d) => {
-        // console.log("yo before dispatch");
-        // console.log(d);
-
+        if (typeof d === "undefined") return;
         // mock
         // gor uncomment const payload = d.data;
+        // const payload = {
+        //   articles: [...d.data],
+        //   totalResults: 4000,
+        //   page_number,
+        //   page_size,
+        // };
+
+        // final
+        console.log("yo");
+        console.log(d);
         const payload = {
-          articles: [...d.data],
-          totalResults: 4000,
+          ...d.data,
           page_number,
           page_size,
         };

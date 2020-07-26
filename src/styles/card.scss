@@ -1,3 +1,17 @@
+/*
+
+
+Card
+  Avatar backgrounnd: #bdbdbd
+  Avatar text: #fafafa
+  Avatar text: rgba(0, 0, 0, 0.87)
+  Avatar date: rgba(0, 0, 0, 0.54)
+  Catd title: rgba(0, 0, 0, 0.87)
+  Card description: rgba(0, 0, 0, 0.54)
+  Card shadow: rgba(0,0,0,0.2)
+
+  */
+
 $card_header_font_color: rgba(0, 0, 0, 0.87);
 $card_body_font_color: rgba(0, 0, 0, 0.54);
 $card_shadow: rgba(0, 0, 0, 0.2);
@@ -31,6 +45,8 @@ $card_details_font_color: rgba(0, 0, 0, 0.54);
   color: $card_title_font_color;
   font-size: 1.5em;
   font-weight: 700;
+  padding: 5px;
+
   a {
     color: $card_title_font_color;
   }
@@ -38,6 +54,7 @@ $card_details_font_color: rgba(0, 0, 0, 0.54);
 
 .my-card-description {
   color: $card_details_font_color;
+  padding: 5px 10px;
 }
 
 .my-card-body {

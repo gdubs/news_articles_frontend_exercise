@@ -1,5 +1,21 @@
+/*
+
+Header
+  background: #3c3b63
+  text: #ffffff
+  shadow: rgba(0,0,0,0.2)
+
+Search
+  background: rgba(255, 255, 255, 0.15)
+  icon: #ffffff
+  placeholder: rgba(255, 255, 255, 0.42)
+  text: #ffffff
+
+  */
+
+$input_placeholder_color: rgba(255, 255, 255, 0.42);
+
 header {
-  background: #3c3b63;
   color: #ffffff;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2);
   box-shadow: rgba(0, 0, 0, 0.2);
@@ -7,10 +23,15 @@ header {
 }
 
 ul.my-nav {
+  background: #3c3b63;
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
   li {
     float: left;
     a {
@@ -25,6 +46,49 @@ ul.my-nav {
       }
     }
   }
+}
+
+.my-nav-centered {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.my-search-container {
+  position: relative;
+  margin: 20px 30px 0;
+
+  i {
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    color: #ffffff;
+  }
+
+  input.my-search-input {
+    padding: 5px 0px 5px 40px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-width: 0;
+  }
+}
+
+.my-search-input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $input_placeholder_color;
+  opacity: 1; /* Firefox */
+}
+
+.my-search-input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: $input_placeholder_color;
+}
+
+.my-search-input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: $input_placeholder_color;
 }
 
 // header ul .my-navbar {

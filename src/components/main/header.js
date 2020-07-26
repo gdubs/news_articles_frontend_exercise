@@ -1,4 +1,5 @@
 import React from "react";
+import BrandImage from "../../resources/appicon/apple-touch-icon-1024x1024.png";
 require("../../styles/header.scss");
 
 class Header extends React.Component {
@@ -7,14 +8,25 @@ class Header extends React.Component {
       <header>
         <ul className="my-nav">
           <li>
-            <a href="#">US News</a>
+            {/* <a href="#">US News</a> */}
+            <img
+              src={BrandImage}
+              alt="US news"
+              style={{ width: "60px", heigtht: "50px" }}
+            />
+          </li>
+          <li className="my-nav-centered">
+            {this.props.is_loading ? <span>Loading articles....</span> : null}
           </li>
           <li className="float-right">
-            <div className="form-inline my-2 my-lg-0">
-              <input className="my-search" type="search" placeholder="Search" />
-              <button className="my-btn" type="submit">
-                Search
-              </button>
+            <div className="my-search-container">
+              <i className="fa fa-search" aria-hidden="true"></i>
+              <input
+                className="my-search-input"
+                type="search"
+                placeholder="Search"
+                onChange={this.props.searchHandler}
+              />
             </div>
           </li>
         </ul>

@@ -1,34 +1,12 @@
-/*
-
-Header
-  background: #3c3b63
-  text: #ffffff
-  shadow: rgba(0,0,0,0.2)
-
-Search
-  background: rgba(255, 255, 255, 0.15)
-  icon: #ffffff
-  placeholder: rgba(255, 255, 255, 0.42)
-  text: #ffffff
-
-Card
-  Avatar backgrounnd: #bdbdbd
-  Avatar text: #fafafa
-  Avatar text: rgba(0, 0, 0, 0.87)
-  Avatar date: rgba(0, 0, 0, 0.54)
-  Catd title: rgba(0, 0, 0, 0.87)
-  Card description: rgba(0, 0, 0, 0.54)
-  Card shadow: rgba(0,0,0,0.2)
-
-
-  */
-
 $dark_font_color: #ffffff;
 $dark_background: #3c3b63;
-$input_placeholder_color: rgba(126, 1, 1, 0.205);
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+  margin-top: 75px;
 }
 
 .float-right {
@@ -60,22 +38,6 @@ input[type="text"] {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-}
-
-.my-search::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: $input_placeholder_color;
-  opacity: 1; /* Firefox */
-}
-
-.my-search:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: $input_placeholder_color;
-}
-
-.my-search::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: $input_placeholder_color;
 }
 
 img {
