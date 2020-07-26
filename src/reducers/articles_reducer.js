@@ -10,18 +10,18 @@ function reducer(
   switch (action.type) {
     case constants.NEWS_GET_NEXT: {
       const next_articles = action.payload.articles.map((a) => {
+        const new_guid = hashString(
+          `${a.title} ${a.source.name} ${a.publishedAt} ${a.description}`
+        );
+        // console.log("new guid " + new_guid);
         return {
           ...a,
-          guid: hashString(`${a.title}-${a.source.name}-${a.publishedAt}`),
+          guid: new_guid,
         };
       });
       const has_more =
         action.payload.page_number * action.payload.page_size <
         action.payload.totalResults;
-
-      console.log("payload");
-      console.log(action.payload);
-
       return {
         ...state,
         current_page_articles: [...next_articles],

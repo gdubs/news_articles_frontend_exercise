@@ -8,7 +8,6 @@ class Header extends React.Component {
       <header>
         <ul className="my-nav">
           <li>
-            {/* <a href="#">US News</a> */}
             <img
               src={BrandImage}
               alt="US news"
