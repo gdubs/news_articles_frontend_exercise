@@ -3,6 +3,7 @@ import { getArticles } from "../../actions/news_articles_actions";
 import { connect } from "react-redux";
 import Articles from "../articles/articles";
 import Header from "./header";
+import MetaTags from "react-meta-tags";
 require("../../styles/card.scss");
 
 const Body = ({
@@ -79,7 +80,15 @@ const Body = ({
         <h2>Articles</h2>
         <div className="my-cards" id="articles">
           {articles.length > 0 ? (
-            <Articles articles={articles} />
+            <>
+              <MetaTags>
+                <title>Page 1</title>
+                <meta name="description" content={articles[0].description} />
+                <meta property="og:title" content="US news" />
+                <meta property="og:image" content={articles[0].urlToImage} />
+              </MetaTags>
+              <Articles articles={articles} />
+            </>
           ) : !isLoading ? (
             <div className="my-card">
               <div className="my-card-body">No articles found</div>
