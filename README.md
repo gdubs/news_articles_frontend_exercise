@@ -19,4 +19,4 @@
 1.  `yarn install` or `npm install` on the root
 2.  create file `.env` and add a key and value of `NEWS_API_KEY=your_api_key_from_newsapi`
 3.  `yarn dev` to execute the webpack dev server and follow the port you'll see on the terminal
-4.  ## Have fun!
+4.  Have fun!
