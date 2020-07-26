@@ -74,12 +74,14 @@ const Body = ({
         <div className="my-cards" id="articles">
           {articles.length > 0 ? (
             <>
+              {/* metatag to show top news current */}
               <MetaTags>
                 <title>US News</title>
                 <meta name="description" content={articles[0].description} />
-                <meta property="og:title" content="US news" />
+                <meta property="og:title" content="US top news today!" />
                 <meta property="og:image" content={articles[0].urlToImage} />
               </MetaTags>
+
               <Articles articles={articles} />
             </>
           ) : !isLoading ? (
