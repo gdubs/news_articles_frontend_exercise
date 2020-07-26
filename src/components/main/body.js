@@ -62,13 +62,6 @@ const Body = ({
     setCurrentPage((pv) => pv + 1);
   };
 
-  const renderArticles = () => {
-    if (articles && articles.length > 0)
-      return articles.map((a, i) => {
-        return <Article key={a.guid} article={a} />;
-      });
-  };
-
   const onSearch = (e) => {
     setSearchBy(e.target.value);
   };
@@ -82,7 +75,7 @@ const Body = ({
           {articles.length > 0 ? (
             <>
               <MetaTags>
-                <title>Page 1</title>
+                <title>US News</title>
                 <meta name="description" content={articles[0].description} />
                 <meta property="og:title" content="US news" />
                 <meta property="og:image" content={articles[0].urlToImage} />
