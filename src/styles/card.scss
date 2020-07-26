@@ -21,6 +21,12 @@ $card_details_font_color: rgba(0, 0, 0, 0.54);
 .my-cards {
   display: flex;
   flex-wrap: wrap;
+
+  @media screen and (min-width: 40em) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 
 // flex: 0 1 calc(30% - 1em);
@@ -33,6 +39,14 @@ $card_details_font_color: rgba(0, 0, 0, 0.54);
   }
   &:last-of-type {
     flex-grow: 0;
+  }
+
+  @media screen and (min-width: 40em) {
+    flex: 1 0 calc(50% - 1em);
+  }
+
+  @media screen and (min-width: 60em) {
+    flex: 1 0 calc(25% - 1em);
   }
 }
 

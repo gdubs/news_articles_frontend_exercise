@@ -5,7 +5,7 @@ const Article = ({ article }) => {
   return (
     <div className="my-card">
       <div>
-        <img src={urlToImage} alt={title} />
+        <img src={urlToImage} alt={title} className="my-card-image" />
       </div>
       <div className="my-card-title">
         <a href={url}>{title}</a>
